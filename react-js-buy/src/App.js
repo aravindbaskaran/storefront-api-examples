@@ -15,6 +15,8 @@ class App extends Component {
 
     this.handleCartClose = this.handleCartClose.bind(this);
     this.addVariantToCart = this.addVariantToCart.bind(this);
+    this.addVariantToCart = this.addVariantToWishlist.bind(this);
+    this.removeVariantToCart = this.removeVariantToWishlist.bind(this);
     this.updateQuantityInCart = this.updateQuantityInCart.bind(this);
     this.removeLineItemInCart = this.removeLineItemInCart.bind(this);
   }
@@ -36,6 +38,9 @@ class App extends Component {
             var vparts = atob(v.id).split("/");
             v.epi = parseInt(vparts[vparts.length - 1]);
           });
+          element.InWishlist = !! (allWishlists.find(wItem => {
+            return wItem.empi == element.empi;
+          }));
         });
         me.setState({
           products: res,
@@ -77,6 +82,18 @@ class App extends Component {
     });
   }
 
+  removeVariantToWishlist(variant, product) {
+    debugger;
+    var wishlistMap = {
+      epi: variant.epi,
+      empi: product.empi,
+      du: "https://demo.swym.it/products" + product.handle
+    };
+    window._swat.removeFromWishList(wishlistMap, function(){
+      alert("Removed to wishlist");
+    });
+  }
+
   updateQuantityInCart(lineItemId, quantity) {
     const checkoutId = this.state.checkout.id
     const lineItemsToUpdate = [{id: lineItemId, quantity: parseInt(quantity, 10)}]
@@ -114,7 +131,7 @@ class App extends Component {
             </div>
           }
           <div className="App__title">
-            <h1>{this.state.shop.name}: React Example</h1>
+            <h1>{this.state.shop.name}: Headless</h1>
             <h2>{this.state.shop.description}</h2>
           </div>
         </header>

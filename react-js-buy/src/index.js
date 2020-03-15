@@ -15,31 +15,8 @@ ReactDOM.render(
 );
 
 
-
 window.swymLandingURL = document.URL;
-(function loadSwymFaster(){
-  var elScripts = document.querySelectorAll("script:not([src]):not([class]):not([id])"), scriptLoadScript, scriptLoadScriptText;
-  for(var i = 0; i < elScripts.length; i++){
-    var elScript = elScripts[i];
-    // TODO change swym- check to script metafield
-    if(elScript.innerText.indexOf('swym-shopify.js') > -1){
-      scriptLoadScriptText = elScript.innerText;
-      break;
-    }
-  }
-  if(scriptLoadScriptText) {
-    var startStr = 'var urls =';
-    var startIdx = scriptLoadScriptText.indexOf(startStr);
-    var endStr = '"];';
-    var endIdx = scriptLoadScriptText.indexOf(endStr,startIdx);
-    var listOfUrlsText = scriptLoadScriptText.slice(startIdx + startStr.length, endIdx + endStr.length);
-    var s = document.createElement('script');
-    s.type = 'text/javascript';
-    s.src = ("\/\/swymprem.azureedge.net\/code\/swym-shopify.js" || "//swymprem.azureedge.net/code/swym-shopify.js") + "?shop=alkis-boutique.myshopify.com";
-    var x = document.getElementsByTagName('script')[0];
-    x.parentNode.insertBefore(s, x);
-  }
-})();
+
 window.swymCart = {token: null, items: []};
 window.swymPageLoad = function(){
   window.SwymProductVariants = window.SwymProductVariants || {};
@@ -51,27 +28,11 @@ window.swymPageLoad = function(){
   window.SwymPageData.uri = window.swymLandingURL;
 };
 
-if(window.selectCallback){
-  (function(){
-    // Variant select override
-    var originalSelectCallback = window.selectCallback;
-    window.selectCallback = function(variant){
-      originalSelectCallback.apply(this, arguments);
-      try{
-        if(window.triggerSwymVariantEvent){
-          window.triggerSwymVariantEvent(variant.id);
-        }
-      }catch(err){
-        console.warn("Swym selectCallback", err);
-      }
-    };
-  })();
-}
 window.swymCustomerId = null;
-var swappName = ("Watchlist" || "Watchlist");
+// var swappName = ("Watchlist" || "Watchlist");
 var swymJSObject = {
-  pid: "LbF6qXFRbNoHhuhXgPs7SjL8MeMDoCxl9BIk7xMXh5g=" || "LbF6qXFRbNoHhuhXgPs7SjL8MeMDoCxl9BIk7xMXh5g=",
-  interface: "/apps/swym" + swappName + "/interfaces/interfaceStore.php?appname=" + swappName
+  pid: "LbF6qXFRbNoHhuhXgPs7SjL8MeMDoCxl9BIk7xMXh5g=" // || "LbF6qXFRbNoHhuhXgPs7SjL8MeMDoCxl9BIk7xMXh5g=",
+  // interface: "/apps/swym" + swappName + "/interfaces/interfaceStore.php?appname=" + swappName
 };
 window.swymJSShopifyLoad = function(){
   if(window.swymPageLoad) window.swymPageLoad();
@@ -110,7 +71,5 @@ window.swymGetCartCookies = function(){
 }
 
 window.swymGetCustomerData = function(){
-  
   return {status:1};
-  
 }

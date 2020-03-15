@@ -41,7 +41,8 @@ h2 {
   background-color: #222;
   background-image: url('https://unsplash.it/1000/300?image=823');
   background-size: cover;
-  color: white;
+  color: #333;
+  font-weight: bolder;
   padding: 10px 10px;
 }
 
