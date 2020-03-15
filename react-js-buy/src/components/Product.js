@@ -69,6 +69,11 @@ class Product extends Component {
           <input min="1" type="number" defaultValue={variantQuantity} onChange={this.handleQuantityChange}></input>
         </label>
         <button className="Product__buy button" onClick={() => this.props.addVariantToCart(variant.id, variantQuantity)}>Add to Cart</button>
+        <div style={{marginTop: "5px"}}>
+          <button className="Product__addtowishlist button" onClick={() => this.props.addVariantToWishlist(variant, this.props.product)}>
+            {!this.props.product.inWishlist ? <span>Add to Wishlist</span> : <span>Added to Wishlist</span>}
+          </button>
+        </div>
       </div>
     );
   }

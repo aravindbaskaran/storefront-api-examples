@@ -27,8 +27,19 @@ class App extends Component {
     });
 
     this.props.client.product.fetchAll().then((res) => {
-      this.setState({
-        products: res,
+      let me = this;
+      window._swat.fetch(function(allWishlists){
+        res.forEach(element => {
+          var parts = atob(element.id).split("/");
+          element.empi = parseInt(parts[parts.length - 1]);
+          element.variants.forEach(v => {
+            var vparts = atob(v.id).split("/");
+            v.epi = parseInt(vparts[vparts.length - 1]);
+          });
+        });
+        me.setState({
+          products: res,
+        });
       });
     });
 
@@ -52,6 +63,10 @@ class App extends Component {
         checkout: res,
       });
     });
+  }
+
+  addVariantToWishlist(variant, product) {
+    debugger;
   }
 
   updateQuantityInCart(lineItemId, quantity) {
@@ -99,6 +114,7 @@ class App extends Component {
           products={this.state.products}
           client={this.props.client}
           addVariantToCart={this.addVariantToCart}
+          addVariantToWishlist={this.addVariantToWishlist}
         />
         <Cart
           checkout={this.state.checkout}
