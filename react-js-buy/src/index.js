@@ -85,6 +85,7 @@ window.swymJSShopifyLoad = function(){
     window._swrc('RetailerId', swymJSObject.pid);
     window._swrc('Callback', function(){
       //window._swat.storage.primaryDomain = "";
+      window._swat.retailerSettings.UI.LauncherOpenHosted = "popup"
       window.initSwymShopify();
     });
   }else if(window._swat.postLoader){
@@ -92,10 +93,12 @@ window.swymJSShopifyLoad = function(){
     window._swrc('RetailerId', swymJSObject.pid);
     window._swrc('Callback', function(){
       //window._swat.storage.primaryDomain = "";
+      window._swat.retailerSettings.UI.LauncherOpenHosted = "popup"
       window.initSwymShopify();
     });
   }else{
     //window._swat.storage.primaryDomain = "";
+    window._swat.retailerSettings.UI.LauncherOpenHosted = "popup"
     window.initSwymShopify();
   }
 }

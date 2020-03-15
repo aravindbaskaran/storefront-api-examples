@@ -67,6 +67,14 @@ class App extends Component {
 
   addVariantToWishlist(variant, product) {
     debugger;
+    var wishlistMap = {
+      epi: variant.epi,
+      empi: product.empi,
+      du: "https://demo.swym.it/products" + product.handle
+    };
+    window._swat.addToWishList(wishlistMap, function(){
+      alert("Added to wishlist");
+    });
   }
 
   updateQuantityInCart(lineItemId, quantity) {
