@@ -1,6 +1,8 @@
 {
-  "name": "react-js-buy",
+  "name": "alki-boutique-headless",
+  "description": "Alki's Boutique Headless",
   "version": "0.1.0",
+  "homepage": "https://agitated-meitner-456963.netlify.com/",
   "private": true,
   "dependencies": {
     "react": "^15.5.4",
