@@ -40,7 +40,7 @@ window.swymLandingURL = document.URL;
     x.parentNode.insertBefore(s, x);
   }
 })();
-window.swymCart = {token: null};
+window.swymCart = {token: null, items: []};
 window.swymPageLoad = function(){
   window.SwymProductVariants = window.SwymProductVariants || {};
   window.SwymHasCartItems = 0 > 0;

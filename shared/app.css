@@ -39,10 +39,11 @@ h2 {
  * ============================== */
 .App__header {
   background-color: #222;
-  background-image: url('https://unsplash.it/1000/300?image=823');
+  background-image: url('//cdn.shopify.com/s/files/1/1751/1833/files/Alkis_b98d7361-648f-4b79-b962-691746e187f1_2000x2000.png?v=1485847108');
   background-size: cover;
   color: white;
   padding: 10px 10px;
+  background-position: 0px -280px;
 }
 
 .App__nav{
