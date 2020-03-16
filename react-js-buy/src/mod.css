@@ -1,11 +1,16 @@
 body {
     font-family: "Work Sans","HelveticaNeue","Helvetica Neue",sans-serif
 }
+.App__header {
+    color: #333;
+    padding: 50px 10px;
+    background-position: 0 -195px;
+}
 .Product-wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     justify-content: space-around;
-    max-width: min(75%, 900px);
+    max-width: min(80%, 1080px);
     grid-gap: 1rem;
 }
 .Product {
