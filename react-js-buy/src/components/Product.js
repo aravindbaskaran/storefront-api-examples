@@ -70,7 +70,7 @@ class Product extends Component {
         </label>
         <button className="Product__buy button" onClick={() => this.props.addVariantToCart(variant.id, variantQuantity)}>Add to Cart</button>
         <div style={{marginTop: "5px"}}>
-          <button className="Product__addtowishlist swym-button button" onClick={() => this.props.addVariantToWishlist(variant, this.props.product)}>
+          <button className={"swym-button swym-add-to-wishlist-view-product swym-icontext swym-heart swym-loaded" + (this.props.product.InWishlist ? " swym-added" : "")} onClick={() => this.props.addVariantToWishlist(variant, this.props.product)}>
             {!this.props.product.InWishlist ? <span>Add to Wishlist</span> : <span>Added to Wishlist</span>}
           </button>
         </div>
