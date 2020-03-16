@@ -28,8 +28,12 @@ class App extends Component {
       });
     });
 
-    this.props.client.product.fetchAll().then((res) => {
+    //this.props.client.collection.fetchAllWithProducts().then((collections) => {
+    let collId = "Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzMzMTk5NzE5NQ==";
+    this.props.client.collection.fetchWithProducts(collId, {productsFirst: 21}).then((collections) => {
       let me = this;
+      console.log(collections);
+      let res = collections.products;
       window._swat.fetch(function(allWishlists){
         res.forEach(element => {
           var parts = atob(element.id).split("/");

@@ -1,0 +1,28 @@
+body {
+    font-family: "Work Sans","HelveticaNeue","Helvetica Neue",sans-serif
+}
+.Product-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    justify-content: space-around;
+    max-width: min(75%, 900px);
+    grid-gap: 1rem;
+}
+.Product {
+    margin-bottom: 30px;
+    display: block;
+}
+.Product__image {
+
+}
+button.swym-button.swym-add-to-wishlist-view-product {
+    font-size: 25px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+.swym-add-to-wishlist-view-product span{
+    display: none;
+}
+.Product > .Product__option {
+    margin-top: 10px;
+}
