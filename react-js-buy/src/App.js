@@ -19,6 +19,7 @@ class App extends Component {
     this.removeVariantToCart = this.removeVariantToWishlist.bind(this);
     this.updateQuantityInCart = this.updateQuantityInCart.bind(this);
     this.removeLineItemInCart = this.removeLineItemInCart.bind(this);
+    this.reloadProducts = this.reloadProducts.bind(this);
   }
 
   componentWillMount() {
@@ -28,6 +29,16 @@ class App extends Component {
       });
     });
 
+    this.reloadProducts();
+
+    this.props.client.shop.fetchInfo().then((res) => {
+      this.setState({
+        shop: res,
+      });
+    });
+  }
+
+  reloadProducts() {
     //this.props.client.collection.fetchAllWithProducts().then((collections) => {
     let collId = "Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzMzMTk5NzE5NQ==";
     this.props.client.collection.fetchWithProducts(collId, {productsFirst: 21}).then((collections) => {
@@ -49,12 +60,6 @@ class App extends Component {
         me.setState({
           products: res,
         });
-      });
-    });
-
-    this.props.client.shop.fetchInfo().then((res) => {
-      this.setState({
-        shop: res,
       });
     });
   }
@@ -81,8 +86,10 @@ class App extends Component {
       empi: product.empi,
       du: "https://demo.swym.it/products" + product.handle
     };
+    let me = this;
     window._swat.addToWishList(wishlistMap, function(){
-      alert("Added to wishlist");
+      //me.reloadProducts();
+      //alert("Added to wishlist");
     });
   }
 
@@ -93,8 +100,9 @@ class App extends Component {
       empi: product.empi,
       du: "https://demo.swym.it/products" + product.handle
     };
+    let me = this;
     window._swat.removeFromWishList(wishlistMap, function(){
-      alert("Removed to wishlist");
+      //me.reloadProducts();
     });
   }
 
