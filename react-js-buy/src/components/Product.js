@@ -64,13 +64,13 @@ class Product extends Component {
         <h5 className="Product__title">{this.props.product.title}</h5>
         <span className="Product__price">${variant.price}</span>
         {variantSelectors}
-        <label className="Product__option">
+        <label className="Product__option swym-label">
           Quantity
-          <input min="1" type="number" defaultValue={variantQuantity} onChange={this.handleQuantityChange}></input>
+          <input className="swym-text swym-input" min="1" type="number" defaultValue={variantQuantity} onChange={this.handleQuantityChange}></input>
         </label>
         <button className="Product__buy button" onClick={() => this.props.addVariantToCart(variant.id, variantQuantity)}>Add to Cart</button>
         <div style={{marginTop: "5px"}}>
-          <button className="Product__addtowishlist button" onClick={() => this.props.addVariantToWishlist(variant, this.props.product)}>
+          <button className="Product__addtowishlist swym-button button" onClick={() => this.props.addVariantToWishlist(variant, this.props.product)}>
             {!this.props.product.InWishlist ? <span>Add to Wishlist</span> : <span>Added to Wishlist</span>}
           </button>
         </div>
