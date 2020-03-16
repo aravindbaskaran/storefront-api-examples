@@ -4,7 +4,7 @@ class VariantSelector extends Component {
   render() {
     return (
       <select
-        className="Product__option"
+        className="Product__option swym-select"
         name={this.props.option.name}
         key={this.props.option.name}
         onChange={this.props.handleOptionChange}
